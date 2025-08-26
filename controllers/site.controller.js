@@ -50,7 +50,8 @@ exports.x_editable=(req,res)=>renderFile(res,'x-editable','x-editable');
 
 exports.login_page= async(req,res,next)=>{
     try{
-        const{Username,Password}=req.body;
+        // const{Username,Password}=req.body;
+         const{Firstename,Lastname,Username,Password,Retype_password}=req.body;
         console.log(Username,Password)
        await res.render('pages/index',{title:'Home'})
     }catch(error){
@@ -58,6 +59,15 @@ exports.login_page= async(req,res,next)=>{
     }
 };
 
+exports.signup_data = async(req,res,next)=>{
+      try{
+     const body_data = req.body;
+     console.log(body_data)
+       res.render('pages/index',{title:'Home'})
+      }catch(error){
+          next(error)
+      }
+}
 //ajax
 
 function ajaxFolder(res,fileName,title){

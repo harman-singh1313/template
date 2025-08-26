@@ -51,6 +51,8 @@ router.get('/x-editable',controller.x_editable);
 
 router.post('/login-submit',controller.login_page);
 
+router.post('/signup_data',controller.signup_data);
+
 
 //ajax
 

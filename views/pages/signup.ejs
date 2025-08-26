@@ -7,7 +7,7 @@
   <meta name="author" content="">
   <link rel="shortcut icon" href="images/favicon.png" type="image/png">
 
-  <title>Bracket Responsive Bootstrap3 Admin</title>
+  <title><%- title %></title>
 
   <link href="css/style.default.css" rel="stylesheet">
 
@@ -67,34 +67,34 @@
             
             <div class="col-md-6">
                 
-                <form method="post" action=" / ">
+                <form method="post" action="/signup_data">
                     
                     <h3 class="nomargin">Sign Up</h3>
                     <p class="mt5 mb20">Already a member? <a href="/signin "><strong>Sign In</strong></a></p>
                 
-                    <label class="control-label">Name</label>
+                    <label class="control-label" >Name</label>
                     <div class="row mb10">
                         <div class="col-sm-6">
-                            <input type="text" class="form-control" placeholder="Firstname" />
+                            <input type="text" class="form-control" placeholder="Firstname" name="Firstname"/>
                         </div>
                         <div class="col-sm-6">
-                            <input type="text" class="form-control" placeholder="Lastname" />
+                            <input type="text" class="form-control" placeholder="Lastname" name="placeholder"/>
                         </div>
                     </div>
                     
                     <div class="mb10">
                         <label class="control-label">Username</label>
-                        <input type="text" class="form-control" />
+                        <input type="text" class="form-control" name="Username"/>
                     </div>
                     
                     <div class="mb10">
                         <label class="control-label">Password</label>
-                        <input type="password" class="form-control" />
+                        <input type="password" class="form-control" name="Password"/>
                     </div>
                     
                     <div class="mb10">
                         <label class="control-label">Retype Password</label>
-                        <input type="password" class="form-control" />
+                        <input type="password" class="form-control"  name="Retype_password"/>
                     </div>
                     
                     <label class="control-label">Birthday</label>
@@ -388,7 +388,7 @@
                     </div>
                     <br />
                     
-                    <button class="btn btn-success btn-block">Sign Up</button>     
+                    <button class="btn btn-success btn-block" type="submit">Sign Up</button>     
                 </form>
             </div><!-- col-sm-6 -->
             
