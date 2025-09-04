@@ -5,6 +5,8 @@ const controller= require('../controllers/site.controller');
 router.get('/',controller.home);
 router.get('/alerts',controller.alerts);
 router.get('/blank',controller.blank);
+router.get('/leads',controller.leads);
+
 router.get('/blog-list',controller.blog_list);
 router.get('/blog-single',controller.blog_single);
 router.get('/bug-issues',controller.bug_issues);
@@ -37,7 +39,7 @@ router.get('/people-directory',controller.people_directory);
 router.get('/profile',controller.profile);
 router.get('/read',controller.read);
 router.get('/search-results',controller.search_results);
-router.get('/signin',controller.singin);
+router.get('/signin',controller.signin);
 router.get('/signup',controller.signup);
 router.get('/sliders',controller.sliders);
 router.get('/tables',controller.tables);
