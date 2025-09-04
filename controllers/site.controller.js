@@ -1,11 +1,7 @@
 const { MongoClient } = require('mongodb');
-const uri = "mongodb+srv://ramgarhia16850:uqO9cIwN4eaKshwv@cluster16852.chyqree.mongodb.net/"
-const client = new MongoClient(uri)
 require("dotenv").config();
-
-
-
-
+const uri = process.env.MONGODB_URI;
+const client = new MongoClient(uri)
 async function renderFile(res,pageName,title){
     //agar lead page run hoga to condetion chale ge
     if(pageName=='leads'){
