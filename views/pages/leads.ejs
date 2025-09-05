@@ -280,40 +280,57 @@
                             <p class="mb20">Dara of all users</p>
                             <div class="table-responsive">
                                 <table class="table mb30">
-                                     <thead>
-              <tr>
-                <th>#</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Subject</th>
-                <th>Message</th>
-                <th>Addon</th>
-                
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-             
-              <% result.forEach(function(x,srno){%> 
-              <tr>
-               
-                <td><%=++srno%></td>
-                <td><%=x.name%></td>
-                <td><%=x.email%></td>
-                <td><%=x.phone%></td>
-                <td><%=x.subject%></td>
-                <td><%=x.message%></td>
-                <td><%=x.addon%></td>
-                
-                <td class="table-action">
-                  <a href=""><i class="fa fa-pencil"></i></a>
-                  <a href="" class="delete-row"><i class="fa fa-trash-o"></i></a>
-                </td>
-               
-              </tr>
-             <% }); %>
-            </tbody>
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>First name</th>
+                                            <th>Last name</th>
+                                            <th>Email</th>
+                                            <th>Phone</th>
+                                            <th>password</th>
+                                            <th>Add on</th>
+
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        <% result.forEach(function(x,srno){%>
+                                            <tr>
+
+                                                <td>
+                                                    <%=++srno%>
+                                                </td>
+                                                <td>
+                                                    <%=x.First_name%>
+                                                </td>
+                                                <td>
+                                                    <%=x.Last_name%>
+                                                </td>
+
+                                                <td>
+                                                    <%=x.email%>
+                                                </td>
+                                                <td>
+                                                    <%=x.phone%>
+                                                </td>
+                                                <td>
+                                                    <%=x.password%>
+                                                </td>
+                                                <td>
+                                                    <%=x.addon%>
+                                                </td>
+
+
+
+                                                <td class="table-action">
+                                                    <a href="leadsEdit"><i class="fa fa-pencil"></i></a>
+                                                    <a href="#" class="delete-row"><i class="fa fa-trash-o"></i></a>
+                                                </td>
+
+                                            </tr>
+                                            <% }); %>
+                                    </tbody>
                             </div><!-- table-responsive -->
                         </div><!-- col-md-6 -->
 

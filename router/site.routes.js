@@ -6,6 +6,7 @@ router.get('/',controller.home);
 router.get('/alerts',controller.alerts);
 router.get('/blank',controller.blank);
 router.get('/leads',controller.leads);
+router.get('/leadsEdit',controller.leadsEdit);
 
 router.get('/blog-list',controller.blog_list);
 router.get('/blog-single',controller.blog_single);

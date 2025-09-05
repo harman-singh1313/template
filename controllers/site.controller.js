@@ -2,22 +2,26 @@ const { MongoClient } = require('mongodb');
 require("dotenv").config();
 const uri = process.env.MONGODB_URI;
 const client = new MongoClient(uri)
-async function renderFile(res,pageName,title){
+async function renderFile(res, pageName, title) {
     //agar lead page run hoga to condetion chale ge
-    if(pageName=='leads'){
-    await client.connect();
-    await client.db("portfolioDB").command({ping:1}); //command is a low level method they send direct command to mongo db  --> ping check mongodb is connected or not
-    console.log('mongodb successfuly connent')
+    if (pageName == 'leads') {
+        await client.connect();
+        await client.db("portfolioDB").command({ ping: 1 }); //command is a low level method they send direct command to mongo db  --> ping check mongodb is connected or not
+        console.log('mongodb successfuly connent')
 
-    const database= client.db("portfolioDB"); //
-    const myCollection= database.collection("contactUsData")
-    const result= await myCollection.find().toArray(); // jo collection vicho data au onu array vich convert karan laye toArray
-    console.log(result)
+        const database = client.db("portfolioDB"); //
+        const myCollection = database.collection("Users")
+        const result = await myCollection.find().toArray(); // jo collection vicho data au onu array vich convert karan laye toArray
+        console.log(result)
 
-       return res.render(`pages/${pageName}`,{result})  // result mtlb data aeya collections vicho onu leads page tey send karna  
+        return res.render(`pages/${pageName}`, { result })  // result mtlb data aeya collections vicho onu leads page tey send karna  
     }
-  return res.render(`pages/${pageName}`, { title }); //agar if condetion nahi chalde ta page page runn hon gey
+
+    return res.render(`pages/${pageName}`, { title }); //agar if condetion nahi chalde ta page page runn hon gey
 }
+
+exports.signin = (req, res) => renderFile(res, 'signin', 'singin');
+exports.leadsEdit = (req, res) => renderFile(res,'leadsEdit','leadsEdit');
 
 exports.home = (req, res) => renderFile(res, 'index', 'Bracket Responsive Bootstrap3 Admin');
 exports.alerts = (req, res) => renderFile(res, 'alerts', 'alerts');
@@ -55,7 +59,6 @@ exports.people_directory = (req, res) => renderFile(res, 'people-directory', 'pe
 exports.profile = (req, res) => renderFile(res, 'profile', 'profile');
 exports.read = (req, res) => renderFile(res, 'read', 'read');
 exports.search_results = (req, res) => renderFile(res, 'search-results', 'search-results');
-exports.signin = (req, res) => renderFile(res, 'signin', 'singin');
 exports.signup = (req, res) => renderFile(res, 'signup', 'signup');
 exports.sliders = (req, res) => renderFile(res, 'sliders', 'sliders');
 exports.tables = (req, res) => renderFile(res, 'tables', 'tables');
@@ -70,9 +73,23 @@ exports.x_editable = (req, res) => renderFile(res, 'x-editable', 'x-editable');
 exports.login_page = async (req, res, next) => {
     try {
         // const{Username,Password}=req.body;
-        const { Firstename, Lastname, Username, Password, Retype_password } = req.body;
-        console.log(Username, Password)
-        await res.render('pages/index', { title: 'Home' })
+        const { Username, Password, } = req.body;
+       await client.connect();
+      await client.db("portfolioDB").command({ping:1});
+      console.log("page connect successfully");
+
+       const db= client.db("portfolioDB");
+       const mycoll= db.collection("Users");
+        const send=await mycoll.find({email:Username.trim(),password:Password.trim()}).toArray()
+        console.log(send)
+        if(send.length > 0){
+            res.send("success")
+        }
+
+        else{
+            res.send("wrong username or password")
+        }
+        
     } catch (error) {
         next(error);
     }
