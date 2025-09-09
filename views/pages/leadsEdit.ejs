@@ -247,417 +247,96 @@
           <div class="row">
 
             <div class="col-md-12">
-              <h2 class="subtitle mb5">USER DETAILS</h2>
-              <div class="table-responsive">
-                <table class="table mb30">
-                  <thead>
-                    <tr>
-                                            <th>#</th>
-                                            <th>First name</th>
-                                            <th>Last name</th>
-                                            <th>Email</th>
-                                            <th>Phone</th>
-                                            <th>password</th>
-                                            <th>Add on</th>
-
-                                            <th></th>
-                                        </tr>
-                  </thead>
-                   <tbody>
-
-                                        <% result.forEach(function(x,srno){%>
-                                            <tr>
-
-                                                <td>
-                                                    <%=++srno%>
-                                                </td>
-                                                <td>
-                                                    <%=x.First_name%>
-                                                </td>
-                                                <td>
-                                                    <%=x.Last_name%>
-                                                </td>
-
-                                                <td>
-                                                    <%=x.email%>
-                                                </td>
-                                                <td>
-                                                    <%=x.phone%>
-                                                </td>
-                                                <td>
-                                                    <%=x.password%>
-                                                </td>
-                                                <td>
-                                                    <%=x.addon%>
-                                                </td>
-
-
-
-                                                <td class="table-action">
-                                                    <a href="/leadsEdit?id=<%= x._id %>"> <i
-                                                            class="fa fa-pencil"></i></a>
-                                                    <a href="#" class="delete-row"><i class="fa fa-trash-o"></i></a>
-                                                </td>
-
-                                            </tr>
-                                            <% }); %>
-                                    </tbody>
-                </table>
-              </div><!-- table-responsive -->
-            </div><!-- col-md-6 -->
-
+              <h5 class="subtitle mb5">Lead Details</h5>
+          <p class="mb20">
+            Name: <%=data.First_name%> <%=data.Last_name%>
+            <br> Email: <%=data.email%>,
+            <br>
+             Ph. <%=data.phone%>
+            <br/>
+            date: <%=data.addon%><br/>
+          
+         </p>
+            
            
+          <!-- Flowup section start -->
 
-          </div>
-          <h3>ADD NEW UPDATES</h3>
+ <div class="table-responsive">
+   <h2 class="subtitle mb5">Lead Updates</h2>
+          <table class="table mb30">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Folloup Date</th>
+               <th>Mode</th>
+                <th>Remark</th>
+               <th></th>
+                
+               
+              </tr>
+            </thead>
+<tbody>
 
-          
-<div class="row">
-        
-        
-        
-        <div class="col-md-12">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <div class="panel-btns">
-                <a href="" class="panel-close">&times;</a>
-                <a href="" class="minimize">&minus;</a>
-              </div>
-              <h2 class="panel-title"> UPDATES</h2>
+  <% if (data && Array.isArray(data.FolloUp)) { %>
+    <% data.FolloUp.forEach(function(x, srno){ %>
+      <tr>
+        <td><%= srno + 1 %></td>
+        <td><%= x.FuDate %></td>
+        <td><%= x.FuMode %></td>
+        <td><%= x.FuRemark %></td>
+        <td class="table-action">
+          <a href=""><i class="fa fa-pencil"></i></a>
+          <a href="" class="delete-row"><i class="fa fa-trash-o"></i></a>
+        </td>
+      </tr>
+    <% }) %>
+  <% } else { %>
+    <tr>
+      <td colspan="5">No followups found</td>
+    </tr>
+  <% } %>
+</tbody>
+          </table>
+          </div><!-- table-responsive -->
+
+          <div class="row">
+
+            <div class="col-md-">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+
+                  <h4 class="panel-title">No Label Form</h4>
+                  <p>This is an example of a form using a placeholder instead of label.</p>
+                </div>
+                    <form action="/leadsEdit?id=<%=data._id %>" method="post">
+
+                  <div class="panel-body">
+                    <div class="row row-pad-5">
+                      <div class="col-lg-6">
+                        <input type="date" name="FuDate" placeholder="date" class="form-control" />
+                      </div>
+                      <!-- <div class="col-lg-4">
+                        <input type="text" name="FuRemark" placeholder="remark" class="form-control" />
+                      </div> -->
+                      <div class="col-lg-6">
+                        <input type="text" name="FuMode" placeholder="mode" class="form-control" />
+                      </div>
+                    </div><!-- row -->
+                    <textarea class="form-control" rows="2" name="FuRemark" placeholder="remark"></textarea>
+                  </div><!-- panel-body -->
+                  <div class="panel-footer">
+                    <button class="btn btn-primary">SUBMIT</button>
+                  </div>
+                </form>
+              </div><!-- panel -->
             </div>
-            <div class="panel-body">
-              <div class="row">
-                <div class="col-sm-6">
-                  <div class="form-group">
-                    <label class="control-label">Firstname</label>
-                    <input type="text" name="firstname" class="form-control" />
-                  </div>
-                </div><!-- col-sm-6 -->
-                <div class="col-sm-6">
-                  <div class="form-group">
-                    <label class="control-label">Lastname</label>
-                    <input type="text" name="lastname" class="form-control" />
-                  </div>
-                </div><!-- col-sm-6 -->
-              </div><!-- row -->
-              
-              <div class="row">
-                <div class="col-sm-6">
-                  <div class="form-group">
-                    <label class="control-label">Email</label>
-                    <input type="email" name="email" class="form-control" />
-                  </div>
-                </div><!-- col-sm-6 -->
-                <div class="col-sm-6">
-                  <div class="form-group">
-                    <label class="control-label">Website</label>
-                    <input type="url" name="website" class="form-control" />
-                  </div>
-                </div><!-- col-sm-6 -->
-              </div><!-- row -->
-              
-            </div><!-- panel-body -->
-            <div class="panel-footer">
-              <button class="btn btn-primary">Submit Card</button>
-            </div>
-          </div>
+
+          </div><!-- row -->
+
+
         </div>
-        
-      </div><!-- row -->
-          
 
-        </div><!-- contentpanel -->
-
-      </div><!-- mainpanel -->
-
-      <div class="rightpanel">
-        <!-- Nav tabs -->
-        <ul class="nav nav-tabs nav-justified">
-          <li class="active"><a href="#rp-alluser" data-toggle="tab"><i class="fa fa-users"></i></a></li>
-          <li><a href="#rp-favorites" data-toggle="tab"><i class="fa fa-heart"></i></a></li>
-          <li><a href="#rp-history" data-toggle="tab"><i class="fa fa-clock-o"></i></a></li>
-          <li><a href="#rp-settings" data-toggle="tab"><i class="fa fa-gear"></i></a></li>
-        </ul>
-
-        <!-- Tab panes -->
-        <div class="tab-content">
-          <div class="tab-pane active" id="rp-alluser">
-            <h5 class="sidebartitle">Online Users</h5>
-            <ul class="chatuserlist">
-              <li class="online">
-                <div class="media">
-                  <a href="#" class="pull-left media-thumb">
-                    <img alt="" src="images/photos/userprofile.png" class="media-object">
-                  </a>
-                  <div class="media-body">
-                    <strong>Eileen Sideways</strong>
-                    <small>Los Angeles, CA</small>
-                  </div>
-                </div><!-- media -->
-              </li>
-              <li class="online">
-                <div class="media">
-                  <a href="#" class="pull-left media-thumb">
-                    <img alt="" src="images/photos/user1.png" class="media-object">
-                  </a>
-                  <div class="media-body">
-                    <span class="pull-right badge badge-danger">2</span>
-                    <strong>Zaham Sindilmaca</strong>
-                    <small>San Francisco, CA</small>
-                  </div>
-                </div><!-- media -->
-              </li>
-              <li class="online">
-                <div class="media">
-                  <a href="#" class="pull-left media-thumb">
-                    <img alt="" src="images/photos/user2.png" class="media-object">
-                  </a>
-                  <div class="media-body">
-                    <strong>Nusja Nawancali</strong>
-                    <small>Bangkok, Thailand</small>
-                  </div>
-                </div><!-- media -->
-              </li>
-              <li class="online">
-                <div class="media">
-                  <a href="#" class="pull-left media-thumb">
-                    <img alt="" src="images/photos/user3.png" class="media-object">
-                  </a>
-                  <div class="media-body">
-                    <strong>Renov Leongal</strong>
-                    <small>Cebu City, Philippines</small>
-                  </div>
-                </div><!-- media -->
-              </li>
-              <li class="online">
-                <div class="media">
-                  <a href="#" class="pull-left media-thumb">
-                    <img alt="" src="images/photos/user4.png" class="media-object">
-                  </a>
-                  <div class="media-body">
-                    <strong>Weno Carasbong</strong>
-                    <small>Tokyo, Japan</small>
-                  </div>
-                </div><!-- media -->
-              </li>
-            </ul>
-
-            <div class="mb30"></div>
-
-            <h5 class="sidebartitle">Offline Users</h5>
-            <ul class="chatuserlist">
-              <li>
-                <div class="media">
-                  <a href="#" class="pull-left media-thumb">
-                    <img alt="" src="images/photos/user5.png" class="media-object">
-                  </a>
-                  <div class="media-body">
-                    <strong>Eileen Sideways</strong>
-                    <small>Los Angeles, CA</small>
-                  </div>
-                </div><!-- media -->
-              </li>
-              <li>
-                <div class="media">
-                  <a href="#" class="pull-left media-thumb">
-                    <img alt="" src="images/photos/user2.png" class="media-object">
-                  </a>
-                  <div class="media-body">
-                    <strong>Zaham Sindilmaca</strong>
-                    <small>San Francisco, CA</small>
-                  </div>
-                </div><!-- media -->
-              </li>
-              <li>
-                <div class="media">
-                  <a href="#" class="pull-left media-thumb">
-                    <img alt="" src="images/photos/user3.png" class="media-object">
-                  </a>
-                  <div class="media-body">
-                    <strong>Nusja Nawancali</strong>
-                    <small>Bangkok, Thailand</small>
-                  </div>
-                </div><!-- media -->
-              </li>
-              <li>
-                <div class="media">
-                  <a href="#" class="pull-left media-thumb">
-                    <img alt="" src="images/photos/user4.png" class="media-object">
-                  </a>
-                  <div class="media-body">
-                    <strong>Renov Leongal</strong>
-                    <small>Cebu City, Philippines</small>
-                  </div>
-                </div><!-- media -->
-              </li>
-              <li>
-                <div class="media">
-                  <a href="#" class="pull-left media-thumb">
-                    <img alt="" src="images/photos/user5.png" class="media-object">
-                  </a>
-                  <div class="media-body">
-                    <strong>Weno Carasbong</strong>
-                    <small>Tokyo, Japan</small>
-                  </div>
-                </div><!-- media -->
-              </li>
-              <li>
-                <div class="media">
-                  <a href="#" class="pull-left media-thumb">
-                    <img alt="" src="images/photos/user4.png" class="media-object">
-                  </a>
-                  <div class="media-body">
-                    <strong>Renov Leongal</strong>
-                    <small>Cebu City, Philippines</small>
-                  </div>
-                </div><!-- media -->
-              </li>
-              <li>
-                <div class="media">
-                  <a href="#" class="pull-left media-thumb">
-                    <img alt="" src="images/photos/user5.png" class="media-object">
-                  </a>
-                  <div class="media-body">
-                    <strong>Weno Carasbong</strong>
-                    <small>Tokyo, Japan</small>
-                  </div>
-                </div><!-- media -->
-              </li>
-            </ul>
-          </div>
-          <div class="tab-pane" id="rp-favorites">
-            <h5 class="sidebartitle">Favorites</h5>
-            <ul class="chatuserlist">
-              <li class="online">
-                <div class="media">
-                  <a href="#" class="pull-left media-thumb">
-                    <img alt="" src="images/photos/user2.png" class="media-object">
-                  </a>
-                  <div class="media-body">
-                    <strong>Eileen Sideways</strong>
-                    <small>Los Angeles, CA</small>
-                  </div>
-                </div><!-- media -->
-              </li>
-              <li>
-                <div class="media">
-                  <a href="#" class="pull-left media-thumb">
-                    <img alt="" src="images/photos/user1.png" class="media-object">
-                  </a>
-                  <div class="media-body">
-                    <strong>Zaham Sindilmaca</strong>
-                    <small>San Francisco, CA</small>
-                  </div>
-                </div><!-- media -->
-              </li>
-              <li>
-                <div class="media">
-                  <a href="#" class="pull-left media-thumb">
-                    <img alt="" src="images/photos/user3.png" class="media-object">
-                  </a>
-                  <div class="media-body">
-                    <strong>Nusja Nawancali</strong>
-                    <small>Bangkok, Thailand</small>
-                  </div>
-                </div><!-- media -->
-              </li>
-              <li class="online">
-                <div class="media">
-                  <a href="#" class="pull-left media-thumb">
-                    <img alt="" src="images/photos/user4.png" class="media-object">
-                  </a>
-                  <div class="media-body">
-                    <strong>Renov Leongal</strong>
-                    <small>Cebu City, Philippines</small>
-                  </div>
-                </div><!-- media -->
-              </li>
-              <li class="online">
-                <div class="media">
-                  <a href="#" class="pull-left media-thumb">
-                    <img alt="" src="images/photos/user5.png" class="media-object">
-                  </a>
-                  <div class="media-body">
-                    <strong>Weno Carasbong</strong>
-                    <small>Tokyo, Japan</small>
-                  </div>
-                </div><!-- media -->
-              </li>
-            </ul>
-          </div>
-          <div class="tab-pane" id="rp-history">
-            <h5 class="sidebartitle">History</h5>
-            <ul class="chatuserlist">
-              <li class="online">
-                <div class="media">
-                  <a href="#" class="pull-left media-thumb">
-                    <img alt="" src="images/photos/user4.png" class="media-object">
-                  </a>
-                  <div class="media-body">
-                    <strong>Eileen Sideways</strong>
-                    <small>Hi hello, ctc?... would you mind if I go to your...</small>
-                  </div>
-                </div><!-- media -->
-              </li>
-              <li>
-                <div class="media">
-                  <a href="#" class="pull-left media-thumb">
-                    <img alt="" src="images/photos/user2.png" class="media-object">
-                  </a>
-                  <div class="media-body">
-                    <strong>Zaham Sindilmaca</strong>
-                    <small>This is to inform you that your product that we...</small>
-                  </div>
-                </div><!-- media -->
-              </li>
-              <li>
-                <div class="media">
-                  <a href="#" class="pull-left media-thumb">
-                    <img alt="" src="images/photos/user3.png" class="media-object">
-                  </a>
-                  <div class="media-body">
-                    <strong>Nusja Nawancali</strong>
-                    <small>Are you willing to have a long term relat...</small>
-                  </div>
-                </div><!-- media -->
-              </li>
-            </ul>
-          </div>
-          <div class="tab-pane pane-settings" id="rp-settings">
-
-            <h5 class="sidebartitle mb20">Settings</h5>
-            <div class="form-group">
-              <label class="col-xs-8 control-label">Show Offline Users</label>
-              <div class="col-xs-4 control-label">
-                <div class="toggle toggle-success"></div>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label class="col-xs-8 control-label">Enable History</label>
-              <div class="col-xs-4 control-label">
-                <div class="toggle toggle-success"></div>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label class="col-xs-8 control-label">Show Full Name</label>
-              <div class="col-xs-4 control-label">
-                <div class="toggle-chat1 toggle-success"></div>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label class="col-xs-8 control-label">Show Location</label>
-              <div class="col-xs-4 control-label">
-                <div class="toggle toggle-success"></div>
-              </div>
-            </div>
-
-          </div><!-- tab-pane -->
-
-        </div><!-- tab-content -->
-      </div><!-- rightpanel -->
+      </div>
 
   </section>
 

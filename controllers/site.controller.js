@@ -1,4 +1,5 @@
 const { render } = require('ejs');
+const { response } = require("express");
 const { MongoClient ,ObjectId} = require('mongodb');
 require("dotenv").config();
 const uri = process.env.MONGODB_URI;
@@ -9,30 +10,39 @@ async function renderFile(req,res, pageName, title) {
         await client.connect();
         await client.db("portfolioDB").command({ ping: 1 }); //command is a low level method they send direct command to mongo db  --> ping check mongodb is connected or not
         console.log('mongodb successfuly connent')
-
         const database = client.db("portfolioDB"); //
         const myCollection = database.collection("Users")
         const result = await myCollection.find().toArray(); // jo collection vicho data au onu array vich convert karan laye toArray
         console.log(result)
 
-        return res.render(`pages/${pageName}`, { result })  // result mtlb data aeya collections vicho onu leads page tey send karna  
+        return res.render(`pages/${pageName}`, {data:result })  // result mtlb data aeya collections vicho onu leads page tey send karna  
     }
  
 
      else if (pageName == 'leadsEdit') {
-        const object= ObjectId.createFromHexString(req.query.id)
-        // console.log(object)
-        
+        const objectId = ObjectId.createFromHexString(req.query.id);
+        console.log(`Your reqested id is ${objectId}`);
+        const query={_id:objectId};
         await client.connect();
         await client.db("portfolioDB").command({ ping: 1 }); //command is a low level method they send direct command to mongo db  --> ping check mongodb is connected or not
         console.log('mongodb successfuly connent')
-
         const database = client.db("portfolioDB"); //
         const myCollection = database.collection("Users")
-        const result = await myCollection.find({_id:object}).toArray(); // jo collection vicho data au onu array vich convert karan laye toArray
-        console.log(result)
 
-        return res.render(`pages/${pageName}`, { result }) 
+     if( req.method=="POST"){
+       console.log('Post Data Received...');
+            console.log(req.body);
+            const newFolloUp= req.body;
+
+            const  folloUp_update= await myCollection.updateOne(query,{$push:{FolloUp:newFolloUp}});
+
+             console.log("Matched:", folloUp_update.matchedCount, "Modified:", folloUp_update.modifiedCount);
+        }
+
+        const result = await myCollection.findOne(query); // jo collection vicho data au onu array vich convert karan laye toArray
+        console.log(result);
+
+        return res.render(`pages/${pageName}`, {data:result });
 
      }
          return res.render(`pages/${pageName}`, { title }); //agar if condetion nahi chalde ta page page runn hon gey
@@ -109,15 +119,8 @@ exports.login_page = async (req, res, next) => {
         }
 
 
-        else if(send.length>0){
-            if(send.email !== Username){
-                res.send("wrong email")
-            }
-            
-            else if(send.password !==pass ){
-                res.send("wrong password")
-            }
-            res.send("wrong username or password")
+        else{
+            res.send("wrong user details")
         }
         
     } catch (error) {
