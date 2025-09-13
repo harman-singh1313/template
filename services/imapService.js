@@ -9,8 +9,8 @@ function ticketNo() {
 function connectIMAP() {
   return new Promise((resolve, reject) => {
     const imap = new Imap({
-      user: "harmansingh16852@gmail.com",
-      password: "hvfllssgjtoqzphr", // Gmail App Password
+      user:process.env.MAIL_ID,
+      password:process.env.MAIL_PASSWORD , // Gmail App Password
       host: "imap.gmail.com",
       port: 993,
       tls: true,
