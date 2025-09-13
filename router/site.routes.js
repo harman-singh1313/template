@@ -2,6 +2,7 @@ const express=require('express');
 const router= express.Router();
 const controller= require('../controllers/site.controller');
 
+
 router.get('/',controller.home);
 router.get('/alerts',controller.alerts);
 router.get('/blank',controller.blank);
@@ -57,6 +58,8 @@ router.post('/login-submit',controller.login_page);
 router.post('/signup_data',controller.signup_data);
 router.post('/leadsEdit',controller.leadsEdit);
 
+// router.get('/imapService',controller.imapService);
+router.get('/read_email',controller.imapService);
 
 
 //ajax
