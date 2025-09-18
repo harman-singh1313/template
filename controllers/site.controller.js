@@ -105,7 +105,7 @@ exports.view_issue = (req, res) => renderFile(req, res, 'view-issue', 'view-issu
 exports.widgets = (req, res) => renderFile(req, res, 'widgets', 'widgets');
 exports.wysiwyg = (req, res) => renderFile(req, res, 'wysiwyg', 'wysiwyg');
 exports.x_editable = (req, res) => renderFile(req, res, 'x-editable', 'x-editable');
-// exports.read_email = (req, res) => renderFile(req, res, 'read_email', 'read_email');
+exports.reply = (req, res) => renderFile(req, res, 'reply', 'reply');
 
 
 

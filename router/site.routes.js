@@ -55,6 +55,8 @@ router.get('/view-issue',controller.view_issue);
 router.get('/widgets',controller.widgets);
 router.get('/wysiwyg',controller.wysiwyg);
 router.get('/x-editable',controller.x_editable);
+router.get('/email',controller.email);
+router.get('/reply',controller.reply);
 
 router.post('/login-submit',controller.login_page);
 

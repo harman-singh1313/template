@@ -220,11 +220,7 @@
                   </ul>
                 </div>
               </li>
-              <li>
-                <button id="chatview" class="btn btn-default tp-icon chat-icon">
-                  <i class="glyphicon glyphicon-comment"></i>
-                </button>
-              </li>
+              
             </ul>
           </div><!-- header-right -->
 
@@ -249,13 +245,13 @@
 
               <ul class="nav nav-pills nav-stacked nav-email">
                 <li class="active">
-                  <a href="/email ">
-                    <span class="badge pull-right">2</span>
+                  <a href="/email">
+                    <span class="badge pull-right"></span>
                     <i class="glyphicon glyphicon-inbox"></i> Inbox
                   </a>
                 </li>
                 <li><a href="#"><i class="glyphicon glyphicon-star"></i> Starred</a></li>
-                <li><a href="#"><i class="glyphicon glyphicon-send"></i> Sent Mail</a></li>
+                <li><a href="/reply"><i class="glyphicon glyphicon-send"></i> Sent Mail</a></li>
                 <li>
                   <a href="#">
                     <span class="badge pull-right">3</span>
@@ -291,100 +287,58 @@
               <div class="panel panel-default">
                 <div class="panel-body">
 
-                  <div class="pull-right">
-                    <div class="btn-group mr10">
-                      <button class="btn btn-sm btn-white tooltips" type="button" data-toggle="tooltip"
-                        title="Archive"><i class="glyphicon glyphicon-hdd"></i></button>
-                      <button class="btn btn-sm btn-white tooltips" type="button" data-toggle="tooltip"
-                        title="Report Spam"><i class="glyphicon glyphicon-exclamation-sign"></i></button>
-                      <button class="btn btn-sm btn-white tooltips" type="button" data-toggle="tooltip"
-                        title="Delete"><i class="glyphicon glyphicon-trash"></i></button>
-                    </div>
 
-                    <div class="btn-group mr10">
-                      <div class="btn-group nomargin">
-                        <button data-toggle="dropdown" class="btn btn-sm btn-white dropdown-toggle tooltips"
-                          type="button" title="Move to Folder">
-                          <i class="glyphicon glyphicon-folder-close mr5"></i>
-                          <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu">
-                          <li><a href="#"><i class="glyphicon glyphicon-folder-open mr5"></i> Conference</a></li>
-                          <li><a href="#"><i class="glyphicon glyphicon-folder-open mr5"></i> Newsletter</a></li>
-                          <li><a href="#"><i class="glyphicon glyphicon-folder-open mr5"></i> Invitations</a></li>
-                          <li><a href="#"><i class="glyphicon glyphicon-folder-open mr5"></i> Promotions</a></li>
-                        </ul>
-                      </div>
-                      <div class="btn-group nomargin">
-                        <button data-toggle="dropdown" class="btn btn-sm btn-white dropdown-toggle tooltips"
-                          type="button" title="Label">
-                          <i class="glyphicon glyphicon-tag mr5"></i>
-                          <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu">
-                          <li><a href="#"><i class="glyphicon glyphicon-tag mr5"></i> Web</a></li>
-                          <li><a href="#"><i class="glyphicon glyphicon-tag mr5"></i> Photo</a></li>
-                          <li><a href="#"><i class="glyphicon glyphicon-tag mr5"></i> Video</a></li>
-                        </ul>
-                      </div>
-                    </div>
 
-                    <div class="btn-group">
-                      <button class="btn btn-sm btn-white" type="button"><i
-                          class="glyphicon glyphicon-chevron-left"></i></button>
-                      <button class="btn btn-sm btn-white" type="button"><i
-                          class="glyphicon glyphicon-chevron-right"></i></button>
-                    </div>
-                  </div><!-- pull-right -->
 
-                  <h5 class="subtitle mb5">Inbox</h5>
-               <!-- ================ -->
+                  <!-- ================ -->
+                  <div>
 
-               
-                  <tbody>
-                    <% if (emails && emails.length> 0) { %>
-                      <% emails.forEach(function(mail, index) { %>
-                        <tr class="unread">
-                          <td>
-                            <!-- <div class="ckbox ckbox-success">
+
+
+                    <tbody>
+                      <% if (emails && emails.length> 0) { %>
+                        <% emails.forEach(function(mail, index) { %>
+                          <tr>
+                            <td>
+                              <!-- <div class="ckbox ckbox-success">
                                 <input type="checkbox" id="checkbox<%= index %>">
                                 <label for="checkbox<%= index %>"></label>
                               </div> -->
-                          </td>
-                          <td>
-                            <!-- <a href="" class="star"><i class="glyphicon glyphicon-star"></i></a> -->
-                          </td>
-                          <td>
-                            <div class="media">
+                            </td>
+                            <td>
+                              <!-- <a href="" class="star"><i class="glyphicon glyphicon-star"></i></a> -->
+                            </td>
+                            <td>
+                              <div class="media" style="box-shadow:0 0 7px rgb(217, 217, 217); padding: 7px 15px; border-radius: 10px;">
 
-                              <div class="media-body">
-                                <span class="media-meta pull-right">
-                                  <%= mail.date ? new Date(mail.date).toLocaleString() : "No Date" %>
-                                </span>
-                                <h4 class="text-primary">
-                                  <%= mail.from %>
-                                </h4>
-                                <p class="email-summary">
-                                  <a href="/emails/<%= mail.uid %>">
-                                    <strong>
-                                      <%= mail.subject %>
-                                    </strong>
-                                  </a>
-                                  - <%= mail.snippet %>
-                                </p>
+                                <div class="media-body" >
+                                  <span class="media-meta pull-right">
+                                    <%= mail.date ? new Date(mail.date).toLocaleString() : "No Date" %>
+                                  </span>
+                                  <h4 class="text-primary" style="color: rgb(26, 26, 26);">
+                                    <%= mail.from %>
+                                  </h4>
+                                  <p class="email-summary">
+                                    <a href="/emails/<%= mail.uid %>">
+                                      <strong style="color: rgb(86, 86, 86); ">
+                                        <%= mail.subject %>
+                                      </strong>
+                                    </a>
+                                    
+                                  </p>
+                                </div>
                               </div>
-                            </div>
-                          </td>
-                        </tr>
-                        <% }) %>
-                          <% } else { %>
-                            <tr>
-                              <td colspan="3">No emails found</td>
-                            </tr>
-                            <% } %>
-                  </tbody>
+                            </td>
+                          </tr>
+                          <% }) %>
+                            <% } else { %>
+                              <tr>
+                                <td colspan="3">No emails found</td>
+                              </tr>
+                              <% } %>
+                    </tbody>
 
-
+                  </div>
 
                   <!-- ========================= -->
                 </div><!-- panel-body -->
@@ -392,7 +346,7 @@
 
             </div><!-- col-sm-9 -->
 
-          </div><!-- row -->
+          </div>row
 
         </div>
 

@@ -221,9 +221,7 @@
                 </div>
               </li>
               <li>
-                <button id="chatview" class="btn btn-default tp-icon chat-icon">
-                  <i class="glyphicon glyphicon-comment"></i>
-                </button>
+               
               </li>
             </ul>
           </div><!-- header-right -->
@@ -250,7 +248,7 @@
               <ul class="nav nav-pills nav-stacked nav-email">
                 <li class="active">
                   <a href="/email ">
-                    <span class="badge pull-right">2</span>
+                    <span class="badge pull-right"></span>
                     <i class="glyphicon glyphicon-inbox"></i> Inbox
                   </a>
                 </li>
@@ -291,93 +289,60 @@
               <div class="panel panel-default">
                 <div class="panel-body">
 
-                  <div class="pull-right">
-                    <div class="btn-group mr10">
-                      <button class="btn btn-sm btn-white tooltips" type="button" data-toggle="tooltip"
-                        title="Archive"><i class="glyphicon glyphicon-hdd"></i></button>
-                      <button class="btn btn-sm btn-white tooltips" type="button" data-toggle="tooltip"
-                        title="Report Spam"><i class="glyphicon glyphicon-exclamation-sign"></i></button>
-                      <button class="btn btn-sm btn-white tooltips" type="button" data-toggle="tooltip"
-                        title="Delete"><i class="glyphicon glyphicon-trash"></i></button>
-                    </div>
 
-                    <div class="btn-group mr10">
-                      <div class="btn-group nomargin">
-                        <button data-toggle="dropdown" class="btn btn-sm btn-white dropdown-toggle tooltips"
-                          type="button" title="Move to Folder">
-                          <i class="glyphicon glyphicon-folder-close mr5"></i>
-                          <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu">
-                          <li><a href="#"><i class="glyphicon glyphicon-folder-open mr5"></i> Conference</a></li>
-                          <li><a href="#"><i class="glyphicon glyphicon-folder-open mr5"></i> Newsletter</a></li>
-                          <li><a href="#"><i class="glyphicon glyphicon-folder-open mr5"></i> Invitations</a></li>
-                          <li><a href="#"><i class="glyphicon glyphicon-folder-open mr5"></i> Promotions</a></li>
-                        </ul>
+                  <!-- ========================= -->
+
+                  <div class="col-sm-9 col-lg-10">
+
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <h2 style="margin-bottom:5px; border-bottom: 1px solid rgb(211, 210, 210);">
+                          <%= data.subject %>
+                        </h2>
+
+                        <p style="margin-bottom:5px; border-bottom: 1px solid rgb(211, 210, 210);">
+                          <strong>From:</strong>
+                          <%= data.from %>
+                        </p>
+
+                        <p style="margin-bottom:5px; border-bottom: 1px solid rgb(211, 210, 210);">
+                          <strong>Date:</strong>
+                          <%= data.date ? new Date(data.date).toLocaleString() : "" %>
+                        </p>
+
+
                       </div>
-                      <div class="btn-group nomargin">
-                        <button data-toggle="dropdown" class="btn btn-sm btn-white dropdown-toggle tooltips"
-                          type="button" title="Label">
-                          <i class="glyphicon glyphicon-tag mr5"></i>
-                          <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu">
-                          <li><a href="#"><i class="glyphicon glyphicon-tag mr5"></i> Web</a></li>
-                          <li><a href="#"><i class="glyphicon glyphicon-tag mr5"></i> Photo</a></li>
-                          <li><a href="#"><i class="glyphicon glyphicon-tag mr5"></i> Video</a></li>
-                        </ul>
+
+                      <div class="panel-body">
+                        <div style="border:1px solid #ddd; padding:10px; margin-top:15px;">
+                          <% if (data.html) { %>
+                            <div><%- data.html %></div>
+                            <% } else { %>
+                               <div style="white-space: pre-line; color:#333;"></div>
+                              <pre><%= data.text %></pre>
+                                </div>
+                              <% } %>
+
+                        </div>
                       </div>
-                    </div>
 
-                    <div class="btn-group">
-                      <button class="btn btn-sm btn-white" type="button"><i
-                          class="glyphicon glyphicon-chevron-left"></i></button>
-                      <button class="btn btn-sm btn-white" type="button"><i
-                          class="glyphicon glyphicon-chevron-right"></i></button>
-                    </div>
-                  </div><!-- pull-right -->
-
-          <!-- ========================= -->
-
-    <div class="col-sm-9 col-lg-10">
-
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                  <h2>
-                    <%= data.subject %>
-                  </h2>
-                  <p><strong>From:</strong>
-                    <%= data.from %>
-                  </p>
-                  <p><strong>Date:</strong>
-                    <%= data.date ? new Date(data.date).toLocaleString() : "" %>
-                  </p>
-                </div>
-
-                <div class="panel-body">
-                  <div style="border:1px solid #ddd; padding:10px; margin-top:15px;">
-                    <% if (data.html) { %>
-                      <div><%- data.html %></div>
-                      <% } else { %>
-                        <pre><%= data.text %></pre>
-                        <% } %>
-                  </div>
-                </div>
-
-                <div class="panel-footer">
-                  <a href="/reply/:<%= data._id || data.uid%>" class="btn btn-primary">Reply</a>
-
-                </div>
-              </div>
-
-              <a href="/pges/read" class="btn btn-primary">⬅ Back to Inbox</a>
+                     
 
 
-              <!-- panel -->
+                      <div style="display: flex; justify-content: space-between;">
+                        <a href="/reply/:<%= data._id || data.uid%>" class="btn btn-primary">Reply</a>
 
-            </div><!-- col-sm-9 -->
+                        <a href="/email" class="btn btn-primary">⬅ Back to Inbox</a>
+                      </div>
+                      </div>
 
-                      <!-- ========================= -->
+
+
+                    <!-- panel -->
+
+                  </div><!-- col-sm-9 -->
+
+                  <!-- ========================= -->
                 </div><!-- panel-body -->
               </div><!-- panel -->
 

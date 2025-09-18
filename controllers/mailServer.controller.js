@@ -68,6 +68,7 @@ exports.readmails = (req, res) => {
                                     uid: attributes ? attributes.uid : null,
                                     subject: parsed.subject,
                                     from: parsed.from?.text || "", // ✅ CHANGE: safe optional chaining
+                                    to:parsed.from?.test|| "",
                                     text: parsed.text,
                                     date: parsed.date,
                                     messageId: parsed.messageId || null,
@@ -112,7 +113,6 @@ exports.readmails = (req, res) => {
 
 };
 
-
 // ===============================
 // GET SINGLE MAIL FOR READ
 // ===============================
@@ -156,6 +156,7 @@ exports.read_single_mail = (req, res) => {
                             subject: parsed.subject,
                             uid: attributes ? attributes.uid : null,
                             from: parsed.from?.text || "", // ✅ CHANGE: safe optional chaining
+                             to:parsed.from?.text|| "",
                             date: parsed.date,
                             text: parsed.text,
                             html: parsed.html,
