@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reply</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Reply to: <%= data.from %>
+        </h1>
+        <form action="/send-reply" method="POST">
+            <input type="hidden" name="to" value="<%= data.from %>">
+            <input type="text" name="subject" value="Re: <%= data.subject %>">
+            <textarea name="message"></textarea>
+            <button type="submit" class="btn btn-success">Send Reply</button>
+        </form>
+
+    </div>
+
+</body>
+
+</html>

@@ -1,13 +1,9 @@
-const { render } = require('ejs');
-// const { response } = require("express");
-const { readeEmail } = require("../services/imapService");
-
 const { MongoClient, ObjectId } = require('mongodb');
 require("dotenv").config();
 const uri = process.env.MONGODB_URI;
 const client = new MongoClient(uri)
 
-
+//leads and leadsEdit page lye function
 
 async function renderFile(req, res, pageName, title) {
     //agar lead page run hoga to condetion chale ge
@@ -23,6 +19,7 @@ async function renderFile(req, res, pageName, title) {
         return res.render(`pages/${pageName}`, { data: result })  // result mtlb data aeya collections vicho onu leads page tey send karna  
     }
 
+    //leadsEdit page lye condetion
 
     else if (pageName == 'leadsEdit') {
         const objectId = ObjectId.createFromHexString(req.query.id);
@@ -34,6 +31,7 @@ async function renderFile(req, res, pageName, title) {
         const database = client.db("portfolioDB"); //
         const myCollection = database.collection("Users")
 
+        //update folloUp array
         if (req.method == "POST") {
             console.log('Post Data Received...');
             console.log(req.body);
@@ -50,6 +48,9 @@ async function renderFile(req, res, pageName, title) {
         return res.render(`pages/${pageName}`, { data: result });
 
     }
+
+    //agar if condetion nahi chalde ta page pages runn hon gey
+
     return res.render(`pages/${pageName}`, { title }); //agar if condetion nahi chalde ta page page runn hon gey
 
 }
@@ -104,23 +105,12 @@ exports.view_issue = (req, res) => renderFile(req, res, 'view-issue', 'view-issu
 exports.widgets = (req, res) => renderFile(req, res, 'widgets', 'widgets');
 exports.wysiwyg = (req, res) => renderFile(req, res, 'wysiwyg', 'wysiwyg');
 exports.x_editable = (req, res) => renderFile(req, res, 'x-editable', 'x-editable');
-exports.read_email = (req, res) => renderFile(req, res, 'read_email', 'read_email');
+// exports.read_email = (req, res) => renderFile(req, res, 'read_email', 'read_email');
 
 
 
-exports.imapService = async (req, res) => {
-    try {
-        const emails = await readeEmail(); // make sure the function name is correct
-        console.log("Emails fetched:", emails);
 
-        res.render('pages/read_email', { data: emails }); // fallback to empty array
-    } catch (err) {
-        res.status(500).json({ success: false, error: err.message || err });
-    }
-};
-
-
-
+//login function
 
 exports.login_page = async (req, res, next) => {
     try {
@@ -149,6 +139,8 @@ exports.login_page = async (req, res, next) => {
         next(error);
     }
 };
+
+//singup function
 
 exports.signup_data = async (req, res, next) => {
     try {

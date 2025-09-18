@@ -11,7 +11,6 @@
   <title>Bracket Responsive Bootstrap3 Admin</title>
 
   <link href="css/style.default.css" rel="stylesheet">
-  <link href="css/helvetica.css" rel="stylesheet">
 
   <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!--[if lt IE 9]>
@@ -28,8 +27,8 @@
 
 
   <section>
-    <%- include('../partials/leftpanel') %>
 
+    <%- include('../partials/leftpanel') %>
 
       <div class="mainpanel">
 
@@ -329,64 +328,80 @@
                       </div>
                     </div>
 
-                    <div class="btn-group">
-                      <button class="btn btn-sm btn-white" type="button"><i
-                          class="glyphicon glyphicon-chevron-left"></i></button>
-                      <button class="btn btn-sm btn-white" type="button"><i
-                          class="glyphicon glyphicon-chevron-right"></i></button>
+                    <div class="btn-group mr5">
+                      <button class="btn btn-sm btn-white" type="button"><i class="fa fa-reply"></i></button>
+                      <button data-toggle="dropdown" class="btn btn-sm btn-white dropdown-toggle" type="button">
+                        <span class="caret"></span>
+                      </button>
+                      <ul role="menu" class="dropdown-menu pull-right">
+                        <li><a href="#">Reply to All</a></li>
+                        <li><a href="#">Forward</a></li>
+                        <li><a href="#">Print</a></li>
+                        <li><a href="#">Delete Message</a></li>
+                        <li><a href="#">Report Spam</a></li>
+                      </ul>
                     </div>
+
                   </div><!-- pull-right -->
 
-                  <h5 class="subtitle mb5">Inbox</h5>
-               <!-- ================ -->
+                  <div class="btn-group mr10">
+                    <button class="btn btn-sm btn-white tooltips" type="button" data-toggle="tooltip"
+                      title="Read Previous Email"><i class="glyphicon glyphicon-chevron-left"></i></button>
+                    <button class="btn btn-sm btn-white tooltips" type="button" data-toggle="tooltip"
+                      title="Read Next Email"><i class="glyphicon glyphicon-chevron-right"></i></button>
+                  </div>
 
-               
-                  <tbody>
-                    <% if (emails && emails.length> 0) { %>
-                      <% emails.forEach(function(mail, index) { %>
-                        <tr class="unread">
-                          <td>
-                            <!-- <div class="ckbox ckbox-success">
-                                <input type="checkbox" id="checkbox<%= index %>">
-                                <label for="checkbox<%= index %>"></label>
-                              </div> -->
-                          </td>
-                          <td>
-                            <!-- <a href="" class="star"><i class="glyphicon glyphicon-star"></i></a> -->
-                          </td>
-                          <td>
-                            <div class="media">
+                  <div class="read-panel">
 
-                              <div class="media-body">
-                                <span class="media-meta pull-right">
-                                  <%= mail.date ? new Date(mail.date).toLocaleString() : "No Date" %>
-                                </span>
-                                <h4 class="text-primary">
-                                  <%= mail.from %>
-                                </h4>
-                                <p class="email-summary">
-                                  <a href="/emails/<%= mail.uid %>">
-                                    <strong>
-                                      <%= mail.subject %>
-                                    </strong>
-                                  </a>
-                                  - <%= mail.snippet %>
-                                </p>
-                              </div>
-                            </div>
-                          </td>
-                        </tr>
-                        <% }) %>
-                          <% } else { %>
-                            <tr>
-                              <td colspan="3">No emails found</td>
-                            </tr>
-                            <% } %>
-                  </tbody>
+                    <div class="media">
+                      <a href="#" class="pull-left">
+                        <img alt="" src="images/photos/user2.png" class="media-object">
+                      </a>
+                      <div class="media-body">
+                        <span class="media-meta pull-right">Yesterday at 1:30am</span>
+                        <h4 class="text-primary">Nusja Nawancali</h4>
+                        <small class="text-muted">From: hisemail@hisemail.com</small>
+                      </div>
+                    </div><!-- media -->
 
+                    <h4 class="email-subject">Lorem ipsum dolor sit amet, consectetur adipisicing elit</h4>
 
+                    <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+                      nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+                      dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
+                      sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+                      laborum.</p>
+                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
+                      totam rem aperiam, eaque ipsa quae ab illo inventore veritati.</p>
+                    <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur
+                      magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem
+                      ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non</p>
 
-                  <!-- ========================= -->
+                    <p><strong>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+                        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                        consequat.</strong></p>
+                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                      pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                      mollit anim id est laborum.</p>
+                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
+                      totam rem aperiam, eaque ipsa quae ab illo inventore veritati.</p>
+                    <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur
+                      magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem
+                      ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non</p>
+
+                    <br />
+
+                    <div class="media">
+                      <a href="#" class="pull-left">
+                        <img alt="" src="images/photos/user2.png" class="media-object">
+                      </a>
+                      <div class="media-body">
+                        <textarea class="form-control" placeholder="Reply here..."></textarea>
+                      </div>
+                    </div><!-- media -->
+
+                  </div><!-- read-panel -->
+
                 </div><!-- panel-body -->
               </div><!-- panel -->
 
@@ -701,38 +716,6 @@
 
 
   <script src="js/custom.js"></script>
-  <script>
-    jQuery(document).ready(function () {
-
-      "use strict"
-
-      //Check
-      jQuery('.ckbox input').click(function () {
-        var t = jQuery(this);
-        if (t.is(':checked')) {
-          t.closest('tr').addClass('selected');
-        } else {
-          t.closest('tr').removeClass('selected');
-        }
-      });
-
-      // Star
-      jQuery('.star').click(function () {
-        if (!jQuery(this).hasClass('star-checked')) {
-          jQuery(this).addClass('star-checked');
-        }
-        else
-          jQuery(this).removeClass('star-checked');
-        return false;
-      });
-
-      // Read mail
-      jQuery('.table-email .media').click(function () {
-        location.href = "/read ";
-      });
-
-    });
-  </script>
 
 </body>
 

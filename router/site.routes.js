@@ -3,6 +3,9 @@ const router= express.Router();
 const controller= require('../controllers/site.controller');
 
 
+
+
+
 router.get('/',controller.home);
 router.get('/alerts',controller.alerts);
 router.get('/blank',controller.blank);
@@ -17,7 +20,7 @@ router.get('/buttons',controller.buttons);
 router.get('/calendar',controller.calendar);
 router.get('/code-editor',controller.code_editor);
 router.get('/compose',controller.compose);
-router.get('/email',controller.email);
+
 router.get('/extras',controller.extras);
 router.get('/fixed-width-noleft',controller.fixed_width_noleft);
 router.get('/fixed-width',controller.fixed_width);
@@ -58,8 +61,6 @@ router.post('/login-submit',controller.login_page);
 router.post('/signup_data',controller.signup_data);
 router.post('/leadsEdit',controller.leadsEdit);
 
-// router.get('/imapService',controller.imapService);
-router.get('/read_email',controller.imapService);
 
 
 //ajax
